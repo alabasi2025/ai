@@ -128,8 +128,7 @@ eval/           150 cases, false-alarm generator, English gate eval, IslamicEval
 messages/       ar.json / en.json — the ONLY source of user-facing prose
 scripts/        bootstrap · smoke · mcp_demo · bench_models · lexicon gate · generators
 docs/           ARCHITECTURE · API · SAFETY-adjacent docs · DECISIONS (E-001…E-054) · STATE · adr/ · KNOWLEDGE
-ci/             GitHub Actions workflow (move to .github/workflows/ to activate — needs `workflows` scope)
-out/            NOT the product — provenance, hand-offs, competition material (delete before public release)
+ci/             GitHub Actions workflow — ready; activation pending (`git mv ci/github-ci.yml .github/workflows/ci.yml`, needs `workflows` scope)
 ```
 
 ## Documentation map

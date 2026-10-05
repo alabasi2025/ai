@@ -58,8 +58,8 @@ The owner's operating model is **"every day = new account, new sandbox, new agen
   claimed the same decision id, the integrator renumbered at merge and recorded the collision
   (`KNOWLEDGE.md` C11).
 * **Separation of product and provenance.** Everything an agent needed historically but a judge does not
-  (hand-off prompts, experiments, model research, competition material) lives under `out/` with a table
-  explaining each item (`out/README.md`), excluded from the image, deletable in one command.
+  (hand-off prompts, experiments, model research, competition material) lived under `out/`, excluded from
+  the image, and was deleted in one command before publication (`git rm -r out`, E-057).
 * **Glossary and bilingual discipline.** `docs/GLOSSARY.md` fixes the AR/EN terms; answers to the owner are in
   Arabic, code and paths in English (`AGENTS.md` §7).
 

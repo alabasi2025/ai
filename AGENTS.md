@@ -43,8 +43,8 @@ quotes are* or *read an image*; it can never change a verdict or produce text th
 5. **Every string the user sees comes from `messages/*.json` or `frontend/src/site/strings.ts`.** AR and EN key
    sets are identical (tested).
 6. **Measured, never claimed.** Any number in docs/UI cites the command or file that produced it.
-7. **Confidentiality**: `out/internal/` and anything derived from the organizer's non-public material never ships.
-   `out/` is deleted before a public release.
+7. **Confidentiality**: nothing derived from the organizer's non-public material is ever committed.
+   The former `out/` folder (non-product material) was removed on 2026-10-05 (E-057); it remains only in git history.
 
 ## 4. Reading order (mandatory, ~15 min)
 
@@ -82,8 +82,7 @@ eval/              cases.yaml (150), false_alarm.py, run_eval.py, english eval, 
 messages/          ar.json · en.json — single source of prose
 scripts/           bootstrap.sh · smoke.py · mcp_demo.py · bench_models.py · check_site_lexicon.py · gen_*.py
 docs/              STATE · DECISIONS · KNOWLEDGE · ARCHITECTURE · DEPLOYMENT · API · INTEGRATIONS · GUARD · MODELS · RISKS · GLOSSARY · adr/ · manual-test/
-ci/                GitHub Actions workflow (move to .github/workflows/ — needs the `workflows` token scope)
-out/               NOT the product: hand-offs, competition material, old notes. Delete before public release.
+ci/                GitHub Actions workflow — ready; activation pending (move to .github/workflows/, needs `workflows` scope)
 ```
 
 ## 6. Per-session ritual
