@@ -1,3 +1,4 @@
+# Activated 2026-10-05 (moved from ci/github-ci.yml as the owner instructed). See DECISIONS E-057.
 name: ci
 on: [push, pull_request]
 permissions: { contents: read }
@@ -11,10 +12,23 @@ jobs:
       - run: pip install -e "./backend[dev,mcp]" pip-audit
       - name: lint + types
         run: cd backend && ruff check app tests && ruff format --check app tests && mypy app
-      - name: fixture index (no network corpus needed)
-        run: python corpus/build_fixture.py || echo "fixture needs full index — tests will skip corpus cases"
-      - name: tests
-        run: cd backend && pytest -q
+      # The fixture is cut from the full index; without it 167/304 tests skip and eval crashes on
+      # corpus/fixture/meta.json (measured on a clean clone). Corpora are sha256-pinned in
+      # corpus/manifest.json, so this is reproducible; cached by manifest hash (~2 min cold).
+      - uses: actions/cache@v4
+        with:
+          path: |
+            corpus/data
+            corpus/index
+          key: corpus-${{ hashFiles('corpus/manifest.json', 'corpus/build_index.py', 'corpus/fetch*.py') }}
+      - name: corpora + translations + index + fixture
+        run: |
+          python corpus/fetch.py
+          python corpus/fetch_translations.py
+          [ -f corpus/index/meta.json ] || python corpus/build_index.py
+          python corpus/build_fixture.py
+      - name: tests (must not skip corpus cases)
+        run: cd backend && pytest -q -rs
       - name: eval (fixture, 3 repeats, fail on any unsafe verdict)
         run: python eval/run_eval.py --repeats 3 --fail-on-unsafe
       - name: dependency audit
