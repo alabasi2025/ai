@@ -9,7 +9,7 @@ never generates religious text, and stores nothing.
 
 > Track 4 entry · *AI in Service of Islamic Content Challenge 2026* · Arabic-first, bilingual (AR/EN), RTL.
 
-[![CI](https://img.shields.io/badge/ci-304%20tests%20%C2%B7%20lint%20%C2%B7%20eval%20150%2F150-2EF2C2?labelColor=12183F)](ci/github-ci.yml)
+[![CI](https://img.shields.io/badge/ci-304%20tests%20%C2%B7%20lint%20%C2%B7%20eval%20150%2F150-2EF2C2?labelColor=12183F)](.github/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-Apache--2.0-6150EA)](LICENSE)
 [![Determinism](https://img.shields.io/badge/false%20alarms-0%2F500-2EF2C2?labelColor=12183F)](eval/REPORT.md)
 
@@ -128,8 +128,7 @@ eval/           150 cases, false-alarm generator, English gate eval, IslamicEval
 messages/       ar.json / en.json — the ONLY source of user-facing prose
 scripts/        bootstrap · smoke · mcp_demo · bench_models · lexicon gate · generators
 docs/           ARCHITECTURE · API · SAFETY-adjacent docs · DECISIONS (E-001…E-054) · STATE · adr/ · KNOWLEDGE
-ci/             GitHub Actions workflow (move to .github/workflows/ to activate — needs `workflows` scope)
-out/            NOT the product — provenance, hand-offs, competition material (delete before public release)
+.github/        GitHub Actions workflow (ci.yml)
 ```
 
 ## Documentation map

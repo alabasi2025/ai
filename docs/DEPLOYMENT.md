@@ -74,8 +74,8 @@ snapshot is prebuilt.
   egress range.
 * **Static-only hosts (Pages, Netlify)** are **not** suitable: the frontend needs the API on the same origin and
   the engine needs ≈ 300 MB RAM.
-* **Development sandbox** — `make serve-mcp` (uvicorn, port 8000) is enough; the PM2 file used in the Genspark
-  sandbox lives in `out/sandbox_ecosystem.config.cjs` and is not a deployment artefact.
+* **Development sandbox** — `make serve-mcp` (uvicorn, port 8000) is enough; a PM2 file is not needed and
+  is not shipped.
 
 ## 5. Operating
 
@@ -83,10 +83,9 @@ snapshot is prebuilt.
 * Rotate the model key from `/settings` (enter a new one) or remove it (**حذف المفتاح من الخادم**).
 * Corpus update = change `corpus/manifest.json` pins → rebuild image. `index_sha256` in `/health` changes, and
   every `determinism_hash` changes with it — receipts issued on the old build replay as `stale`, by design.
-* CI: `ci/github-ci.yml` is complete (lint, types, tests, eval `--fail-on-unsafe`, pip-audit, frontend gates,
-  gitleaks, Docker build + smoke). Activate it with
-  `mkdir -p .github/workflows && git mv ci/github-ci.yml .github/workflows/ci.yml` from an account that has the
-  `workflows` scope.
+* CI: `.github/workflows/ci.yml` (active since 2026-10-05, E-057): lint, types, corpora → index → fixture
+  (cached by manifest hash), pytest (all 304, none skipped), eval `--fail-on-unsafe`, pip-audit, frontend
+  gates, gitleaks, Docker build + smoke.
 
 ## 6. Rollback
 

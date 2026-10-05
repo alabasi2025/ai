@@ -21,9 +21,8 @@ These rules are set by the project owner and override any default workflow.
 
 ## Environment
 - All writes inside `/home/user/webapp` only. Every bash command prefixed with `cd /home/user/webapp &&`.
-- Baseline of the environment: `out/extra/docs/ENVIRONMENT_ANALYSIS.md` (historical; not product).
 
 ## Repository visibility & publication gate
 - Repo is **private during preparation** (terms §15 permits this). It must be **public at delivery** (participant guide).
-- `out/internal/` holds audits, annex triage, and anything derived from non-public organizer material; `out/` as a whole is **not the product** and **must be deleted before publishing** (`git rm -r out`).
+- `out/` (audits, annex triage, hand-offs) was removed from the tree on 2026-10-05 (`git rm -r out`, E-057). It still exists in git history; rewriting history is an owner decision.
 - Before flipping to public: create the public tree from a clean orphan branch (or filter history) containing only `README`, `SOURCES`, `AI_USAGE`, `SAFETY` (rewritten), `CHANGELOG`, `LICENSE`, `messages/`, `eval/`, `docs/API.md`, `docs/ARCHITECTURE.md`, ADRs — and run a grep gate for annex phrases before the push.

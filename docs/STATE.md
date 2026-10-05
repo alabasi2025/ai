@@ -32,6 +32,9 @@ Then read in this order: `AGENTS.md` → this file → `docs/DECISIONS.md` → `
 
 ## 0.9 Branch design/claude (2026-10-03) — UI v3, see DECISIONS E-050 (renumbered from E-047 at merge; E-047 = English gate data layer). Merged to main 2026-10-03; owner review pending. Run: `pm2 start ecosystem.config.cjs` (API :8000 serves frontend/dist; UI preview :3000).
 
+## 0.97 Publication hygiene (2026-10-05) — DECISIONS E-057
+CI active at `.github/workflows/ci.yml` (corpora → index → fixture in CI; 304/304 tests, none skipped, measured on a clean clone). `out/` removed from the tree (522 files); references below to `out/…` are historical and live only in git history (`git show 6343fd8:out/…`). Repo now `alabasi2025/ai` (exact mirror of Project-Basira: 105 commits, tags `v0.3.0`, `archive/v4-ui`).
+
 ## 0.95 Design dossier + mobile UX (2026-10-05) — DECISIONS E-055
 `docs/design/README.md`: identity research, seal geometry (guard: `python3 docs/design/brand/seal.py --check`), IA of `/` and `/check`, phone tap flow, identity v4 **implemented** (E-056: `frontend/src/site/identity.css`, seal from `seal.py`, axe 0/32), and the mobile battery (47/66 → 66/66, `docs/design/evidence/`). Code fixes E-UX-01…05 shipped in `Check.tsx` / `lux.css`.
 
